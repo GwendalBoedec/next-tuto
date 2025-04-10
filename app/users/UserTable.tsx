@@ -13,9 +13,10 @@ interface Props {
 }
 
  const UserTable = async ({ sortOrder }: Props) => {
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   const res = await fetch("https://jsonplaceholder.typicode.com/users",
     //{next: { revalidate: 10 }} --> pour gérer le refresh du cache. sinon on met cache: "no store" si on veut pas de data
-  { cache: "no-store"}
+  /*{ cache: "no-store"} */
   );
 
   const users: User[] = await res.json();
